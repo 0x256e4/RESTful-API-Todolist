@@ -23,7 +23,7 @@ class StoreRegisterRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:4',
-            'email' => 'required|email|min:1',
+            'email' => 'required|email|min:1|unique:users',
             'password' => 'required|min:4'
         ];
     }
@@ -32,7 +32,9 @@ class StoreRegisterRequest extends FormRequest
     {
         return [
             'name.min' => 'Field :attribute tidak boleh kurang dari :min! ^^',
-            'email' => 'Field :attribute tidak boleh kosong',
+            'email.required' => 'Field :attribute tidak boleh kosong',
+            'email.email' => 'Format email salah! ^^',
+            'email.unique' => 'Email sudah terdaftar! ^^',
             'password.min' => 'Field :attribute tidak boleh kurang dari :min! ^^'
         ];
     }
